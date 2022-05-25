@@ -132,7 +132,8 @@ class KNearestNeighbor(object):
         #########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-        pass
+        dists=np.sqrt(np.square(X).sum(1).reshape([-1,1])+np.square(self.X_train).sum(1).reshape([1,-1])-2*X.dot(self.X_train.T))
+
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
