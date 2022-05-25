@@ -181,5 +181,6 @@ class KNearestNeighbor(object):
 
             y_pred = np.argmax(np.bincount(closest_y.astype(int)))
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+            print('label', y_pred)
 
         return y_pred
