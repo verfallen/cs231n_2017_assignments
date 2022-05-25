@@ -1,5 +1,6 @@
 from builtins import range
 from builtins import object
+from math import dist
 import numpy as np
 from past.builtins import xrange
 
@@ -132,8 +133,8 @@ class KNearestNeighbor(object):
         #########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-        dists=np.sqrt(np.square(X).sum(1).reshape([-1,1])+np.square(self.X_train).sum(1).reshape([1,-1])-2*X.dot(self.X_train.T))
-
+        dists = np.sqrt(np.square(X).sum(1).reshape(
+            [-1, 1])+np.square(self.X_train).sum(1).reshape([1, -1])-2*X.dot(self.X_train.T))
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
@@ -165,8 +166,8 @@ class KNearestNeighbor(object):
             # Hint: Look up the function numpy.argsort.                             #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
-            pass
+            knn = np.argsort(dist[i, :])[0:k]
+            closest_y = self.y_train[knn]
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             #########################################################################
@@ -178,8 +179,7 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            pass
-
+            y_pred = np.argmax(np.bincount(closest_y.astype(int)))
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
         return y_pred
